@@ -10,6 +10,13 @@ namespace Data_Structures
             linkedList.Add(3);
             linkedList.Add(4);
             linkedList.Print();
+
+            var queue = new Queues.Queue(4);
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Print();
         }
     }
 }

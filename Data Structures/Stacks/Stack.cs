@@ -25,5 +25,14 @@
             }
             top--;
         }
+
+        public void Print()
+        {
+            for (int i = top; i >= 0; i--)
+            {
+                Console.Write(items[i] + " ");
+            }
+            Console.WriteLine();
+        }
     }
 }

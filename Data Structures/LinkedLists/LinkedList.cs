@@ -9,11 +9,13 @@ namespace Data_Structures.LinkedLists
         private class Node {
             public int Value { get; set; }
             public Node? Next { get; set; }
+            public Node? Previous { get; set; }
 
             public Node(int value)
             {
                 Value = value;
                 Next = null;
+                Previous = null;
             }
         }
 
@@ -41,7 +43,10 @@ namespace Data_Structures.LinkedLists
             {
                 current = current.Next;
             }
-            current.Next = new Node(value);
+            current.Next = new Node(value)
+            {
+                Previous = current
+            };
         }
 
         public void Print()
@@ -49,7 +54,11 @@ namespace Data_Structures.LinkedLists
             Node? current = head;
             while (current != null)
             {
-                Console.Write(current.Value + " ");
+                Console.Write("Current: " + current.Value + " ");
+                if (current.Previous != null) 
+                { 
+                    Console.Write("Prev: " + current.Previous.Value + " ");
+                }
                 current = current.Next;
             }
             Console.WriteLine();
