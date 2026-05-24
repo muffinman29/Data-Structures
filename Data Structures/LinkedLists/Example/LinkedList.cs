@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Data_Structures.Common;
 
-namespace Data_Structures.LinkedLists
+namespace Data_Structures.LinkedLists.Example
 {
     public class LinkedList<T>
     {
@@ -42,7 +42,7 @@ namespace Data_Structures.LinkedLists
         {
             Node<T>? current = head;
             while (current != null)
-            {                
+            {
                 Console.Write("Current: " + current.Value + " ");
                 if (current.Previous != null)
                 {
@@ -52,6 +52,34 @@ namespace Data_Structures.LinkedLists
                 current = current.Next;
             }
             Console.WriteLine();
+        }
+
+        public void GoBack()
+        {
+            Node<T>? current = head;
+            Node<T>? tail = current;
+            //  Traverse to the end of the list
+            while (current != null)
+            {
+                tail = current;
+                current = current.Next;
+            }
+            var previous = tail.Previous;
+            Console.WriteLine("Go backwards one page: " + previous.Value);
+        }
+
+        public void GoForward()
+        {
+            Node<T>? current = head;
+            Node<T>? tail = current;
+            //  Traverse to the end of the list
+            while (current.Next != null)
+            {
+                tail = current;
+                current = current.Next;
+            }
+            var next = tail.Next;
+            Console.WriteLine("Go forward one page: " + next.Value);
         }
     }
 }

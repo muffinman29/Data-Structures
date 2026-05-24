@@ -1,11 +1,11 @@
 ﻿namespace Data_Structures.Stacks
 {
-    internal class Stack<T>(int size)
+    internal class Stack(int size)
     {
-        public T[] items = new T[size];
+        public int[] items = new int[size];
         public int top = -1;
 
-        public void Push(T item)
+        public void Push(int item)
         {
             if (top == items.Length - 1)
             {
@@ -24,6 +24,41 @@
                 return;
             }
             top--;
+        }
+
+        public int Peek()
+        {
+            if (top == -1)
+            {
+                Console.WriteLine("Stack is empty");
+                return -1; // Return -1 to indicate stack is empty
+            }
+            return items[top];
+        }
+
+        public bool IsEmpty()
+        {
+            return top == -1;
+        }
+
+        public bool IsFull()
+        {
+            return top == items.Length - 1;
+        }
+
+        public int Size()
+        {
+            return top + 1;
+        }
+
+        public void Clear()
+        {
+            top = -1;
+        }
+
+        public int Top()
+        {
+            return top;
         }
 
         public void Print()

@@ -32,6 +32,26 @@
             front++;
         }
 
+        public int Peek()
+        {
+            if (front > back)
+            {
+                Console.WriteLine("Queue is empty");
+                return -1; // Return -1 to indicate the queue is empty
+            }
+            return items[front];
+        }
+
+        public bool IsEmpty()
+        {
+            return front > back;
+        }
+
+        public bool IsFull()
+        {
+            return back == items.Length - 1;
+        }
+
         public void Print()
         {
             for (int i = front; i <= back; i++)
