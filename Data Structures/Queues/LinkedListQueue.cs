@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data_Structures.Queues
 {
-    public class LinkedListQueue<T>
+    public class LinkedListQueue<T> : IPrintable
     {
         private Node<T>? _head;
 
@@ -21,10 +21,7 @@ namespace Data_Structures.Queues
             {
                 current = current.Next;
             }
-            current.Next = new Node<T>(item)
-            {
-                Previous = current
-            };
+            current.Next = new Node<T>(item);
         }
 
         public T Dequeue()
@@ -43,7 +40,7 @@ namespace Data_Structures.Queues
         {
             if (_head == null)
             {
-                throw new InvalidOperationException("Stack is empty.");
+                throw new InvalidOperationException("Queue is empty.");
             }
             return _head.Value;
         }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data_Structures.HashTables
+namespace Data_Structures.Common
 {
-    public class HashTable
+    public interface IPrintable
     {
+        void Print();
     }
 }

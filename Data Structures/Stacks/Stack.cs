@@ -1,6 +1,8 @@
-﻿namespace Data_Structures.Stacks
+﻿using Data_Structures.Common;
+
+namespace Data_Structures.Stacks
 {
-    internal class Stack(int size)
+    internal class Stack(int size) : IPrintable
     {
         public int[] items = new int[size];
         public int top = -1;

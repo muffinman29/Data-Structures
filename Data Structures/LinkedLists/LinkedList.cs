@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using Data_Structures.Common;
+﻿using Data_Structures.Common;
 
 namespace Data_Structures.LinkedLists
 {
@@ -22,36 +18,29 @@ namespace Data_Structures.LinkedLists
 
         public void Add(T value)
         {
+            Node<T> newNode = new Node<T>(value);
             if (head == null)
             {
-                head = new Node<T>(value);
+                head = newNode;
                 return;
             }
-            Node<T> current = head!; // head is non-null here because of the check above
+            Node<T> current = head;
             while (current.Next != null)
             {
                 current = current.Next;
             }
-            current.Next = new Node<T>(value)
-            {
-                Previous = current
-            };
+            current.Next = newNode;
         }
 
         public void Print()
         {
             Node<T>? current = head;
             while (current != null)
-            {                
-                Console.Write("Current: " + current.Value + " ");
-                if (current.Previous != null)
-                {
-                    Console.Write("Prev: " + current.Previous.Value + " ");
-                }
-                Console.WriteLine();
+            {
+                Console.Write($"{current.Value} -> ");
                 current = current.Next;
             }
-            Console.WriteLine();
+            Console.WriteLine("null");
         }
     }
 }

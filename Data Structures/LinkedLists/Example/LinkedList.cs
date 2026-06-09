@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using Data_Structures.Common;
+﻿using Data_Structures.Common;
 
 namespace Data_Structures.LinkedLists.Example
 {
-    public class LinkedList<T>
+    public class LinkedList<T> : INavigation, IPrintable
     {
         private Node<T>? head;
 
@@ -27,15 +23,12 @@ namespace Data_Structures.LinkedLists.Example
                 head = new Node<T>(value);
                 return;
             }
-            Node<T> current = head!; // head is non-null here because of the check above
+            Node<T> current = head; // head is non-null here because of the check above
             while (current.Next != null)
             {
                 current = current.Next;
             }
-            current.Next = new Node<T>(value)
-            {
-                Previous = current
-            };
+            current.Next = new Node<T>(value);
         }
 
         public void Print()
@@ -43,12 +36,7 @@ namespace Data_Structures.LinkedLists.Example
             Node<T>? current = head;
             while (current != null)
             {
-                Console.Write("Current: " + current.Value + " ");
-                if (current.Previous != null)
-                {
-                    Console.Write("Prev: " + current.Previous.Value + " ");
-                }
-                Console.WriteLine();
+                Console.WriteLine("Current: " + current.Value);
                 current = current.Next;
             }
             Console.WriteLine();
@@ -56,30 +44,42 @@ namespace Data_Structures.LinkedLists.Example
 
         public void GoBack()
         {
-            Node<T>? current = head;
-            Node<T>? tail = current;
-            //  Traverse to the end of the list
-            while (current != null)
+            if (head == null)
             {
-                tail = current;
+                Console.WriteLine("List is empty");
+                return;
+            }
+            if (head.Next == null)
+            {
+                Console.WriteLine("List has only one node; no previous node");
+                return;
+            }
+
+            Node<T> current = head;
+            Node<T>? previous = null;
+            // Traverse to the end of the list, keeping track of the node before the last
+            while (current.Next != null)
+            {
+                previous = current;
                 current = current.Next;
             }
-            var previous = tail.Previous;
-            Console.WriteLine("Go backwards one page: " + previous.Value);
+            Console.WriteLine("Go backwards one: " + previous!.Value);
         }
 
         public void GoForward()
         {
-            Node<T>? current = head;
-            Node<T>? tail = current;
-            //  Traverse to the end of the list
-            while (current.Next != null)
+            if (head == null)
             {
-                tail = current;
-                current = current.Next;
+                Console.WriteLine("List is empty");
+                return;
             }
-            var next = tail.Next;
-            Console.WriteLine("Go forward one page: " + next.Value);
+            if (head.Next == null)
+            {
+                Console.WriteLine("No next node to go forward to");
+                return;
+            }
+
+            Console.WriteLine("Go forward one: " + head.Next.Value);
         }
     }
 }

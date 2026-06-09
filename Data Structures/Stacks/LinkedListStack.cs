@@ -5,7 +5,7 @@ using Data_Structures.Common;
 
 namespace Data_Structures.Stacks
 {
-    public class LinkedListStack<T>
+    public class LinkedListStack<T> : IPrintable
     {
         private Node<T>? _head;
 

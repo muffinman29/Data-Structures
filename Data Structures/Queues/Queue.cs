@@ -1,6 +1,8 @@
-﻿namespace Data_Structures.Queues
+﻿using Data_Structures.Common;
+
+namespace Data_Structures.Queues
 {
-    public class Queue
+    public class Queue : IPrintable
     {
         public int[] items;
         public int front = 0;

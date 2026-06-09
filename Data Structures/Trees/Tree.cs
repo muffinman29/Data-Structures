@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Data_Structures.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Data_Structures.Trees
 {
-    internal class Tree<T>
+    internal class Tree<T> : IPrintable
     {
         private class Node(T value)
         {
